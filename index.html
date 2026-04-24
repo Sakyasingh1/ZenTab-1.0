@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenTab | Deep Focus Workspace</title>
+    <meta name="description" content="A controlled digital workspace designed for deep focus, structured learning, and intentional browsing.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <div id="app" class="app-container">
+        <!-- Title Bar -->
+        <header class="title-bar">
+            <div class="window-controls">
+                <span class="control close"></span>
+                <span class="control minimize"></span>
+                <span class="control maximize"></span>
+            </div>
+            <div class="app-title">ZenTab 1.0</div>
+            <div class="global-status">
+                <span class="status-badge secure">Secure Shield Active</span>
+            </div>
+        </header>
+
+        <!-- Tab Bar -->
+        <nav class="tab-bar">
+            <div class="tabs-container" id="tabs-container">
+                <div class="tab active" data-tab="dashboard">
+                    <span class="tab-icon">🏠</span>
+                    <span class="tab-title">Dashboard</span>
+                    <span class="tab-close">×</span>
+                </div>
+            </div>
+            <button class="add-tab" id="add-tab-btn">+</button>
+        </nav>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <div class="nav-controls">
+                <button class="nav-btn" id="back-btn">←</button>
+                <button class="nav-btn" id="forward-btn">→</button>
+                <button class="nav-btn" id="reload-btn">↻</button>
+            </div>
+            <div class="address-bar-container">
+                <div class="security-badge" id="security-badge">
+                    <span class="shield-icon">🔒</span>
+                </div>
+                <input type="text" id="address-input" class="address-input" value="zentab://dashboard" placeholder="Search or enter address">
+                <div class="address-actions">
+                    <button class="action-btn">⭐</button>
+                </div>
+            </div>
+            <div class="app-actions">
+                <button class="action-btn" id="zen-ai-btn" title="ZenAI Assistant">✨</button>
+                <button class="action-btn" id="vault-btn" title="Password Vault">🔑</button>
+                <button class="action-btn" id="settings-btn" title="Settings">⚙️</button>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-top">
+                    <button class="side-item active" data-view="dashboard" title="Dashboard">
+                        <span class="side-icon">📊</span>
+                    </button>
+                    <button class="side-item" data-view="focus" title="Focus Mode">
+                        <span class="side-icon">🧘</span>
+                    </button>
+                    <button class="side-item" data-view="blocker" title="Website Blocker">
+                        <span class="side-icon">🚫</span>
+                    </button>
+                    <button class="side-item" data-view="planner" title="Study Planner">
+                        <span class="side-icon">📅</span>
+                    </button>
+                    <button class="side-item" data-view="analytics" title="Analytics">
+                        <span class="side-icon">📈</span>
+                    </button>
+                </div>
+                <div class="sidebar-bottom">
+                    <button class="side-item" data-view="utility" title="Utilities">
+                        <span class="side-icon">🛠️</span>
+                    </button>
+                    <button class="side-item" id="toggle-notes" title="Toggle Notes">
+                        <span class="side-icon">📝</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="content-area" id="content-area">
+                <!-- Views will be injected here -->
+                <section id="dashboard-view" class="view active">
+                    <div class="dashboard-header">
+                        <div class="welcome">
+                            <h1>Welcome back, Focus Master</h1>
+                            <p class="date" id="current-date">Friday, April 24, 2026</p>
+                        </div>
+                        <div class="daily-stats">
+                            <div class="stat-card">
+                                <span class="stat-value">84</span>
+                                <span class="stat-label">Focus Score</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-value">6</span>
+                                <span class="stat-label">Pomodoros</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="grid-card wide goals-card">
+                            <h3>Daily Goals</h3>
+                            <ul class="goal-list">
+                                <li class="goal-item">
+                                    <input type="checkbox" id="goal-1" checked>
+                                    <label for="goal-1">Complete Research on AI Ethics</label>
+                                    <span class="tag study">Study</span>
+                                </li>
+                                <li class="goal-item">
+                                    <input type="checkbox" id="goal-2">
+                                    <label for="goal-2">Draft Project Proposal</label>
+                                    <span class="tag work">Work</span>
+                                </li>
+                                <li class="goal-item">
+                                    <input type="checkbox" id="goal-3">
+                                    <label for="goal-3">30m Daily Meditation</label>
+                                    <span class="tag health">Health</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="grid-card timetable-card">
+                            <h3>Today's Timetable</h3>
+                            <div class="timetable-list">
+                                <div class="timetable-item active">
+                                    <span class="time">14:00 - 15:30</span>
+                                    <span class="subject">Deep Learning Lab</span>
+                                </div>
+                                <div class="timetable-item">
+                                    <span class="time">16:00 - 17:00</span>
+                                    <span class="subject">UX Design Workshop</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid-card quote-card">
+                            <p class="quote">"Focus is the art of knowing what to ignore."</p>
+                            <span class="author">— Unknown</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="focus-view" class="view">
+                    <div class="focus-container">
+                        <div class="pomodoro-timer">
+                            <div class="timer-ring">
+                                <svg width="300" height="300">
+                                    <circle cx="150" cy="150" r="140" class="ring-bg"></circle>
+                                    <circle cx="150" cy="150" r="140" class="ring-progress" id="timer-progress"></circle>
+                                </svg>
+                                <div class="timer-display">
+                                    <span id="timer-minutes">25</span>:<span id="timer-seconds">00</span>
+                                </div>
+                            </div>
+                            <div class="timer-controls">
+                                <button class="btn btn-primary" id="start-timer">Start Session</button>
+                                <button class="btn btn-secondary" id="reset-timer">Reset</button>
+                            </div>
+                            <div class="session-info">Session 1 of 4</div>
+                        </div>
+
+                        <div class="ambient-sounds">
+                            <h3>Ambient Soundscapes</h3>
+                            <div class="sound-grid">
+                                <button class="sound-item" data-sound="rain">🌧️ Rain</button>
+                                <button class="sound-item" data-sound="beats">🎧 Lo-fi</button>
+                                <button class="sound-item" data-sound="forest">🌲 Forest</button>
+                                <button class="sound-item" data-sound="noise">🌫️ Brown Noise</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="blocker-view" class="view">
+                    <h2>Website Blocker</h2>
+                    <p class="view-desc">Manage distracting sites and set strict focus rules.</p>
+                    <div class="blocker-grid">
+                        <div class="grid-card">
+                            <h3>Blocked Domains</h3>
+                            <div class="add-rule">
+                                <input type="text" placeholder="e.g. *.reddit.com">
+                                <button class="btn btn-primary">Block</button>
+                            </div>
+                            <ul class="rule-list">
+                                <li class="rule-item"><span>*.facebook.com</span> <button class="remove">×</button></li>
+                                <li class="rule-item"><span>*.twitter.com</span> <button class="remove">×</button></li>
+                                <li class="rule-item"><span>*.youtube.com</span> <button class="remove">×</button></li>
+                            </ul>
+                        </div>
+                        <div class="grid-card">
+                            <h3>Block Schedule</h3>
+                            <div class="schedule-item">
+                                <span>Mon - Fri</span>
+                                <span>09:00 - 18:00</span>
+                            </div>
+                            <button class="btn btn-secondary">Edit Schedule</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="planner-view" class="view">
+                    <h2>Study Planner</h2>
+                    <div class="planner-calendar">
+                        <!-- Simplified Calendar Mockup -->
+                        <div class="calendar-header">
+                            <button>←</button>
+                            <h3>April 2026</h3>
+                            <button>→</button>
+                        </div>
+                        <div class="calendar-grid">
+                            <div class="day-header">Mon</div>
+                            <div class="day-header">Tue</div>
+                            <div class="day-header">Wed</div>
+                            <div class="day-header">Thu</div>
+                            <div class="day-header">Fri</div>
+                            <div class="day-header">Sat</div>
+                            <div class="day-header">Sun</div>
+                            <!-- ... days ... -->
+                            <div class="day muted">27</div>
+                            <div class="day muted">28</div>
+                            <div class="day muted">29</div>
+                            <div class="day muted">30</div>
+                            <div class="day">1</div>
+                            <div class="day">2</div>
+                            <div class="day active">3</div>
+                            <!-- ... more days ... -->
+                        </div>
+                    </div>
+                </section>
+
+                <section id="analytics-view" class="view">
+                    <h2>Productivity Analytics</h2>
+                    <div class="analytics-charts">
+                        <div class="grid-card wide">
+                            <h3>Time Distribution</h3>
+                            <div class="mock-chart bar-chart">
+                                <div class="bar" style="height: 80%" data-label="Mon"></div>
+                                <div class="bar" style="height: 60%" data-label="Tue"></div>
+                                <div class="bar" style="height: 90%" data-label="Wed"></div>
+                                <div class="bar" style="height: 75%" data-label="Thu"></div>
+                                <div class="bar active" style="height: 95%" data-label="Fri"></div>
+                            </div>
+                        </div>
+                        <div class="grid-card">
+                            <h3>Site Classification</h3>
+                            <ul class="stat-list">
+                                <li><span class="dot productive"></span> Productive: 75%</li>
+                                <li><span class="dot neutral"></span> Neutral: 15%</li>
+                                <li><span class="dot distracting"></span> Distracting: 10%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section id="utility-view" class="view">
+                    <h2>Utility Panel</h2>
+                    <div class="utility-grid">
+                        <div class="grid-card">
+                            <h3>Scientific Calculator</h3>
+                            <div class="calculator">
+                                <input type="text" id="calc-display" readonly value="0">
+                                <div class="calc-buttons">
+                                    <button>7</button><button>8</button><button>9</button><button>÷</button>
+                                    <button>4</button><button>5</button><button>6</button><button>×</button>
+                                    <button>1</button><button>2</button><button>3</button><button>-</button>
+                                    <button>0</button><button>.</button><button>=</button><button>+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-card">
+                            <h3>Unit Converter</h3>
+                            <div class="converter">
+                                <input type="number" placeholder="Value">
+                                <select><option>Kilograms to Pounds</option><option>Celsius to Fahrenheit</option></select>
+                                <div class="result">Result: --</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="vault-view" class="view">
+                    <div class="vault-header">
+                        <h2>Password Vault</h2>
+                        <span class="status-badge secure">AES-256 Encrypted</span>
+                    </div>
+                    <div class="vault-auth" id="vault-auth">
+                        <div class="lock-icon">🔒</div>
+                        <p>Enter Master Password to Unlock</p>
+                        <input type="password" placeholder="Master Password">
+                        <button class="btn btn-primary" onclick="ZenTab.unlockVault()">Unlock</button>
+                    </div>
+                    <div class="vault-content" id="vault-content" style="display: none;">
+                        <div class="add-vault-entry">
+                            <input type="text" placeholder="Service Name">
+                            <input type="password" placeholder="Password">
+                            <button class="btn btn-primary">+</button>
+                        </div>
+                        <div class="vault-list">
+                            <!-- Entries will appear here -->
+                        </div>
+                    </div>
+                </section>
+                <section id="ai-view" class="view">
+                    <div class="ai-header">
+                        <h2>ZenAI Bridge</h2>
+                        <div class="ai-provider-selector">
+                            <select id="ai-provider">
+                                <option value="claude">Claude 3.5 Sonnet</option>
+                                <option value="gpt4">ChatGPT GPT-4o</option>
+                                <option value="gemini">Google Gemini 1.5 Pro</option>
+                                <option value="ollama">Ollama (Local)</option>
+                                <option value="deepseek">DeepSeek V2</option>
+                                <option value="qwen">Qwen 2.5</option>
+                            </select>
+                            <button class="btn btn-secondary" id="ai-auth-btn">Configure API</button>
+                        </div>
+                    </div>
+
+                    <div class="ai-auth-panel" id="ai-auth-panel" style="display: none;">
+                        <div class="grid-card">
+                            <h3>Provider Authentication</h3>
+                            <div class="auth-fields">
+                                <input type="password" id="ai-api-key" placeholder="Enter API Key or Endpoint">
+                                <button class="btn btn-primary" id="save-ai-config">Save Configuration</button>
+                            </div>
+                            <p class="hint">API keys are stored locally in your encrypted vault.</p>
+                        </div>
+                    </div>
+
+                    <div class="ai-chat-container">
+                        <div class="ai-chat-messages" id="ai-chat-messages">
+                            <div class="message system">
+                                <span class="avatar">✨</span>
+                                <div class="msg-content">Hello! I am ZenAI. How can I assist your focus session today?</div>
+                            </div>
+                        </div>
+                        <div class="ai-chat-input">
+                            <textarea id="ai-input" placeholder="Ask ZenAI anything..."></textarea>
+                            <button id="send-ai-msg">Send</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+
+
+
+            <!-- Notes Panel -->
+            <aside class="notes-panel" id="notes-panel">
+                <div class="notes-header">
+                    <h3>Quick Notes</h3>
+                    <button id="add-note-btn">+</button>
+                </div>
+                <div class="notes-search">
+                    <input type="text" placeholder="Search notes...">
+                </div>
+                <div class="notes-list">
+                    <div class="note-item active">
+                        <div class="note-title">Research Snippets</div>
+                        <div class="note-preview">Key takeaways from the...</div>
+                        <div class="note-date">2m ago</div>
+                    </div>
+                    <div class="note-item">
+                        <div class="note-title">Meeting Notes</div>
+                        <div class="note-preview">Discussion about the new...</div>
+                        <div class="note-date">1h ago</div>
+                    </div>
+                </div>
+                <div class="note-editor">
+                    <textarea placeholder="Start typing..."></textarea>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Status Bar -->
+        <footer class="status-bar">
+            <div class="status-left">
+                <span class="status-item"><span class="icon">🛡️</span> Shield: 12 trackers blocked</span>
+                <span class="status-item"><span class="icon">🔗</span> DoH: Cloudflare</span>
+            </div>
+            <div class="status-right">
+                <span class="status-item">RAM: 420MB</span>
+                <span class="status-item" id="sync-status">Synced</span>
+                <span class="status-item" id="clock">14:56</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
